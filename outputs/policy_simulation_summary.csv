@@ -1,0 +1,8 @@
+﻿Policy,Crisis Rate,Rate Reduction,Mean Prob Drop,Cases Rescued
+Policy A-20 (Debt -20%),51.7%,0.0%,0.0195,0
+Policy A-40 (Debt -40%),46.7%,5.0%,0.0429,3
+Policy A-60 (Debt -60%),45.0%,6.7%,0.0655,4
+Policy B-20 (Income +20%),60.0%,-8.3%,-0.0403,-5
+Policy B-40 (Income +40%),58.3%,-6.7%,-0.0160,-4
+Policy B-60 (Income +60%),46.7%,5.0%,0.0979,3
+Policy C (A-40+B-40),53.3%,-1.7%,0.0333,-1

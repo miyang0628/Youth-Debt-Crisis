@@ -1,0 +1,17 @@
+﻿Method,Case ID,Crisis prob (orig),Crisis prob (CF),Prob reduction,Feature,Original value,CF value,Change (abs),Change (%)
+DiCE,5,0.9992,0.0275,0.9717,Temporary wage income (10k KRW),360.0,8161.1,7801.1,2167.0
+DiCE,8,0.0615,0.5242,-0.4627,Household regular income (10k KRW),3315.0,17835.4,14520.4,438.0
+DiCE,10,0.9879,0.0116,0.9763,Temporary wage income (10k KRW),240.0,3643.8,3403.8,1418.2
+DiCE,11,0.9985,0.0006,0.9979,Temporary wage income (10k KRW),460.0,8193.7,7733.7,1681.2
+DiCE,11,0.9985,0.0006,0.9979,Housing tenure type,1.0,4.0,3.0,300.0
+DiCE,15,0.0029,0.5146,-0.5117,Region,1.0,5.0,4.0,400.0
+DiCE,15,0.0029,0.5146,-0.5117,Financial institution loan (10k KRW),10000.0,64079.0,54079.0,540.8
+DiCE,20,0.004,0.8413,-0.8373,Marital status,5.0,4.0,-1.0,-20.0
+DiCE,20,0.004,0.8413,-0.8373,Financial institution loan (10k KRW),0.0,71475.2,71475.2,
+DiCE,21,0.9955,0.3571,0.6384,Temporary wage income (10k KRW),1440.0,11968.2,10528.2,731.1
+DiCE,21,0.9955,0.3571,0.6384,Age,23.0,19.5,-3.5,-15.2
+DiCE,25,0.9727,0.0029,0.9698,Temporary wage income (10k KRW),1200.0,4681.5,3481.5,290.1
+DiCE,41,0.8338,0.1002,0.7336,Credit card debt (10k KRW),4380.0,4820.7,440.7,10.1
+DiCE,41,0.8338,0.1002,0.7336,Lease deposit debt (10k KRW),0.0,38692.7,38692.7,
+DiCE,51,0.0841,0.5778,-0.4937,Regular wage income (10k KRW),4000.0,13151.2,9151.2,228.8
+DiCE,51,0.0841,0.5778,-0.4937,Other debt (10k KRW),0.0,8205.8,8205.8,

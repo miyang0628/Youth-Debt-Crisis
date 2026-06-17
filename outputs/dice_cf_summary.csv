@@ -1,0 +1,31 @@
+﻿case_id,prob_original,cf_id,prob_cf,pred_cf,n_changes,changed_features
+5,0.9992,1,0.0275,0,1,h19_pers_income2
+5,0.9992,2,0.0327,0,2,"h19_pers_income2, debt_credit"
+5,0.9992,3,0.0275,0,1,h19_pers_income2
+8,0.0615,1,0.5242,1,1,h19_cin
+8,0.0615,2,0.9543,1,2,"h19_pers_income2, total_debt"
+8,0.0615,3,0.9931,1,2,"education, h19_pers_income2"
+10,0.9879,1,0.0116,0,1,h19_pers_income2
+10,0.9879,2,0.1953,0,2,"education, region"
+10,0.9879,3,0.0011,0,1,h19_pers_income2
+11,0.9985,1,0.0006,0,2,"h19_pers_income2, housing_tenure"
+11,0.9985,2,0.0108,0,2,"marital_status, h19_pers_income2"
+11,0.9985,3,0.0033,0,1,h19_pers_income2
+15,0.0029,1,0.5146,1,2,"region, debt_financial"
+15,0.0029,2,0.8236,1,3,"region, h19_din, debt_financial"
+15,0.0029,3,0.8204,1,3,"employment_status, h19_pers_income4, debt_financial"
+20,0.004,1,0.8413,1,2,"marital_status, debt_financial"
+20,0.004,2,0.7918,1,1,debt_financial
+20,0.004,3,0.6542,1,1,debt_financial
+21,0.9955,1,0.3571,0,2,"h19_pers_income2, age"
+21,0.9955,2,0.3856,0,2,"h19_pers_income2, debt_card"
+21,0.9955,3,0.3981,0,2,"h19_pers_income2, h19_cin"
+25,0.9727,1,0.0029,0,1,h19_pers_income2
+25,0.9727,2,0.0011,0,2,"h19_pers_income2, housing_tenure"
+25,0.9727,3,0.4919,0,1,housing_tenure
+41,0.8338,1,0.1002,0,2,"debt_card, debt_lease"
+41,0.8338,2,0.1971,0,2,"region, debt_credit"
+41,0.8338,3,0.1334,0,2,"debt_private, debt_lease"
+51,0.0841,1,0.5778,1,2,"h19_pers_income1, debt_other"
+51,0.0841,2,0.5312,1,2,"h19_pers_income1, debt_private"
+51,0.0841,3,0.9437,1,2,"debt_financial, age"

@@ -1,0 +1,11 @@
+﻿case_id,prob_original,prob_cf,pred_cf,n_changes,changed_features
+5,0.9992,0.0461,0,2,"debt_financial, total_debt"
+8,0.0615,0.564,1,1,h19_pers_income2
+10,0.9879,0.2775,0,1,h19_pers_income2
+11,0.9985,0.1476,0,2,"employment_status, h19_pers_income2"
+15,0.0029,0.6002,1,4,"h19_cin, debt_financial, housing_debt_balance, total_debt"
+20,0.004,0.9513,1,2,"debt_financial, housing_tenure"
+21,0.9955,0.3228,0,2,"debt_financial, age"
+25,0.9727,0.2448,0,1,debt_financial
+41,0.8338,0.006,0,1,h19_pers_income2
+51,0.0841,0.8074,1,1,education

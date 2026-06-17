@@ -1,0 +1,11 @@
+﻿Case ID,NiCE prob (orig),NiCE prob (CF),NiCE prob reduction,NiCE changed feature,NiCE original value,NiCE CF value,NiCE change (%),DiCE prob (orig),DiCE prob (CF),DiCE prob reduction,DiCE changed feature,DiCE original value,DiCE CF value,DiCE change (%)
+5,0.9992,0.0461,0.9531,Financial institution loan (10k KRW),26200.0,0.0,-100.0,0.9992,0.0275,0.9717,Temporary wage income (10k KRW),360.0,8161.1,2167.0
+8,0.0615,0.564,-0.5025,Temporary wage income (10k KRW),3310.0,2520.0,-23.9,0.0615,0.5242,-0.4627,Household regular income (10k KRW),3315.0,17835.4,438.0
+10,0.9879,0.2775,0.7104,Temporary wage income (10k KRW),240.0,1440.0,500.0,0.9879,0.0116,0.9763,Temporary wage income (10k KRW),240.0,3643.8,1418.2
+11,0.9985,0.1476,0.8509,Employment status,9.0,1.0,-88.9,0.9985,0.0006,0.9979,Temporary wage income (10k KRW),460.0,8193.7,1681.2
+15,0.0029,0.6002,-0.5973,Household regular income (10k KRW),8715.0,11699.0,34.2,0.0029,0.5146,-0.5117,Region,1.0,5.0,400.0
+20,0.004,0.9513,-0.9473,Financial institution loan (10k KRW),0.0,7955.0,,0.004,0.8413,-0.8373,Marital status,5.0,4.0,-20.0
+21,0.9955,0.3228,0.6727,Financial institution loan (10k KRW),121802.0,20000.0,-83.6,0.9955,0.3571,0.6384,Temporary wage income (10k KRW),1440.0,11968.2,731.1
+25,0.9727,0.2448,0.7279,Financial institution loan (10k KRW),15700.0,0.0,-100.0,0.9727,0.0029,0.9698,Temporary wage income (10k KRW),1200.0,4681.5,290.1
+41,0.8338,0.006,0.8278,Temporary wage income (10k KRW),240.0,1440.0,500.0,0.8338,0.1002,0.7336,Credit card debt (10k KRW),4380.0,4820.7,10.1
+51,0.0841,0.8074,-0.7233,Education level,7.0,5.0,-28.6,0.0841,0.5778,-0.4937,Regular wage income (10k KRW),4000.0,13151.2,228.8

@@ -1,0 +1,18 @@
+﻿Method,Case ID,Crisis prob (orig),Crisis prob (CF),Prob reduction,Feature,Original value,CF value,Change (abs),Change (%)
+NiCE,5,0.9992,0.0461,0.9531,Financial institution loan (10k KRW),26200.0,0.0,-26200.0,-100.0
+NiCE,5,0.9992,0.0461,0.9531,Total debt (10k KRW),26200.0,0.0,-26200.0,-100.0
+NiCE,8,0.0615,0.564,-0.5025,Temporary wage income (10k KRW),3310.0,2520.0,-790.0,-23.9
+NiCE,10,0.9879,0.2775,0.7104,Temporary wage income (10k KRW),240.0,1440.0,1200.0,500.0
+NiCE,11,0.9985,0.1476,0.8509,Employment status,9.0,1.0,-8.0,-88.9
+NiCE,11,0.9985,0.1476,0.8509,Temporary wage income (10k KRW),460.0,1440.0,980.0,213.0
+NiCE,15,0.0029,0.6002,-0.5973,Household regular income (10k KRW),8715.0,11699.0,2984.0,34.2
+NiCE,15,0.0029,0.6002,-0.5973,Financial institution loan (10k KRW),10000.0,16200.0,6200.0,62.0
+NiCE,15,0.0029,0.6002,-0.5973,Housing debt balance (10k KRW),10000.0,15300.0,5300.0,53.0
+NiCE,15,0.0029,0.6002,-0.5973,Total debt (10k KRW),10000.0,16200.0,6200.0,62.0
+NiCE,20,0.004,0.9513,-0.9473,Financial institution loan (10k KRW),0.0,7955.0,7955.0,
+NiCE,20,0.004,0.9513,-0.9473,Housing tenure type,5.0,1.0,-4.0,-80.0
+NiCE,21,0.9955,0.3228,0.6727,Financial institution loan (10k KRW),121802.0,20000.0,-101802.0,-83.6
+NiCE,21,0.9955,0.3228,0.6727,Age,23.0,28.0,5.0,21.7
+NiCE,25,0.9727,0.2448,0.7279,Financial institution loan (10k KRW),15700.0,0.0,-15700.0,-100.0
+NiCE,41,0.8338,0.006,0.8278,Temporary wage income (10k KRW),240.0,1440.0,1200.0,500.0
+NiCE,51,0.0841,0.8074,-0.7233,Education level,7.0,5.0,-2.0,-28.6
