@@ -1,21 +1,25 @@
-# Youth Debt Crisis Early Warning and Policy Simulation Framework
-### Counterfactual Explanation-Based XAI Approach Using Korean Welfare Panel Data
+# Measuring Latent Youth Financial Vulnerability
+
+### A Mixed Explainable-Machine-Learning Framework for Indicator Construction, Validity Assessment, and Policy-Relevant Interpretation Using Korean Welfare Panel Data
 
 ---
 
-> **Note:** This repository is anonymized for double-blind peer review. Author information will be added upon acceptance.
+> **Note:** This repository is anonymized for double-blind peer review. Author and affiliation information will be added upon acceptance.
 
 ---
 
 ## Overview
 
-This repository contains the full reproducible pipeline for a study on youth debt crisis prediction and policy simulation using explainable AI (XAI) methods. The framework integrates gradient boosting ensemble models, SHAP-based feature attribution, and counterfactual explanation methods (NiCE and DiCE) to generate actionable, individual-level policy prescriptions for youth debt crisis intervention.
+This repository contains the full reproducible pipeline for a study that treats **youth financial vulnerability as a latent social construct** and asks how it can be operationalized into an indicator that is at once **measurable, interpretable, and verifiable**. The framing is one of social-science measurement rather than of algorithmic prediction: no new learner is proposed. Instead, established tools are bound into a single measurement logic of *construction → interpretation → validation*.
 
-**Key contributions:**
-- Early warning scoring model for youth debt crisis using public welfare panel data (no sensitive financial records required)
-- SHAP-based causal structure analysis of debt crisis risk factors
-- Cross-method counterfactual analysis (NiCE + DiCE) for algorithmic recourse
-- Policy heterogeneity simulation by employment status subgroup
+Using the 19th Wave (2024) of the Korea Welfare Panel Study (KOWEPS, *n* = 1,916 youth aged 19–39), the pipeline (i) constructs a debt-service-ratio (DSR)-based crisis indicator, (ii) estimates its manifestation with a LightGBM–XGBoost ensemble treated as a **nonlinear measurement instrument**, (iii) renders the instrument interpretable through SHAP as a **quantitative–qualitative bridge**, and (iv) checks the stability of the indicator's implied structure through **cross-algorithm counterfactual agreement** (NiCE and DiCE) used as a **convergent-validity** criterion.
+
+**Key methodological contributions:**
+
+- Operationalization of a latent social construct into an interpretable indicator using only publicly available welfare panel data (no administrative or credit-bureau records)
+- SHAP-based knowledge extraction as the qualitative half of a mixed-method indicator, surfacing nonmonotonic constituent structure
+- Cross-algorithm counterfactual agreement (NiCE + DiCE) proposed as a lightweight convergent-validity check for learned social indicators
+- Structural-coherence reading of subgroup heterogeneity by employment status
 
 ---
 
@@ -30,14 +34,14 @@ youth-debt-crisis/
 │   ├── y_train_sm.csv
 │   └── y_test.csv
 ├── notebooks/
-│   ├── 01_preprocessing.ipynb     # Data loading, DSR computation, target definition
-│   ├── 02_eda.ipynb               # Exploratory data analysis
-│   ├── 03_model_lgbm_xgb.ipynb   # Model training, evaluation, ensemble
-│   ├── 04_shap_analysis.ipynb     # SHAP feature importance and dependence plots
-│   ├── 05_nice_counterfactual.ipynb   # NiCE counterfactual explanations
-│   ├── 05b_dice_counterfactual.ipynb  # DiCE counterfactual explanations
-│   ├── 05c_case_comparison.ipynb      # NiCE vs DiCE case-level comparison
-│   └── 06_policy_simulation.ipynb     # Policy scenario simulation
+│   ├── 01_preprocessing.ipynb     # Data loading, DSR computation, indicator definition
+│   ├── 02_eda.ipynb               # Descriptive structure of the construct
+│   ├── 03_model_lgbm_xgb.ipynb    # Component 1: the measurement instrument
+│   ├── 04_shap_analysis.ipynb     # Component 2: quantitative–qualitative bridge
+│   ├── 05_nice_counterfactual.ipynb   # Component 3: NiCE validity reading
+│   ├── 05b_dice_counterfactual.ipynb  # Component 3: DiCE validity reading
+│   ├── 05c_case_comparison.ipynb      # Convergent-validity: NiCE vs DiCE agreement
+│   └── 06_policy_simulation.ipynb     # Structural-coherence reading
 ├── outputs/                       # Generated figures, tables, model files
 ├── requirements.txt
 └── README.md
@@ -50,57 +54,85 @@ youth-debt-crisis/
 This study uses the **Korea Welfare Panel Study (KOWEPS) 19th Wave (2024)**, a publicly available dataset produced by the Korea Institute for Health and Social Affairs (KIHASA).
 
 **How to obtain the data:**
-1. Visit [https://www.koweps.re.kr](https://www.koweps.re.kr)
+
+1. Visit <https://www.koweps.re.kr>
 2. Register for a free account
-3. Download `koweps_hpc19_2024_beta2.dta` (merged household-individual-child dataset)
+3. Download `koweps_hpc19_2024_beta2.dta` (merged household–individual–child dataset)
 4. Place the file in the `data/` directory
 
 > **Important:** Raw KOWEPS data files must not be redistributed per the KOWEPS Terms of Use. Only preprocessed aggregate outputs are included in this repository.
 
+The analytical sample is restricted to youth aged 19–39 with positive reported income (*n* = 1,916). DSR values are winsorized at 500% to limit the influence of extreme outliers.
+
 ---
 
-## Methods
+## The Measurement Framework
 
-### Target Variable
-Debt Service Ratio (DSR) ≥ 0.40 is used as a proxy for debt crisis, consistent with the Korean Financial Services Commission's regulatory threshold.
+The pipeline mirrors the measurement logic of construction, interpretation, and validation.
+
+### Indicator Construction — the latent target
+
+A binary manifest indicator of debt-service distress is defined at the regulatory ceiling of the Korean Financial Services Commission's Total-DSR framework:
 
 ```
 DSR = (annual interest + annual principal repayment) / total annual income
 debt_crisis = 1 if DSR ≥ 0.40 else 0
 ```
 
-### Models
-- **LightGBM** + **XGBoost** ensemble (soft voting)
-- SMOTE applied to training set for class imbalance
-- 5-fold stratified cross-validation
+The three quantities used to construct the DSR (annual interest, annual repayment, total income) are excluded from the instrument's inputs to prevent target leakage.
 
-### XAI Methods
-| Method | Purpose |
-|---|---|
-| SHAP (TreeExplainer) | Global and local feature attribution |
-| NiCE (sparsity-optimized) | Minimum-change individual recourse |
-| DiCE (random method) | Diverse counterfactual pathways |
+### Component 1 — the measurement instrument
+
+- **LightGBM** + **XGBoost** ensemble (soft voting), treated as a nonlinear estimator of the construct's manifestation rather than as a black-box classifier
+- SMOTE applied to the **training set only**; the test set retains the original class distribution so evaluation reflects real conditions
+- 5-fold stratified cross-validation, with SMOTE applied **within each training fold** to prevent leakage
+- Discrimination (ROC-AUC) is read as a measurement-fidelity criterion — how well the instrument tracks the latent construct
+
+### Component 2 — the quantitative–qualitative bridge
+
+| Method                    | Role                                                         |
+| ------------------------- | ----------------------------------------------------------- |
+| SHAP (TreeExplainer)      | Renders the instrument's internal constituent structure legible; global + local attribution; nonmonotonicity via dependence structure |
+
+SHAP is used not as post-hoc justification of a prediction but as the mechanism that turns a purely quantitative estimator into a mixed-method object whose qualitative structure can be read and criticized.
+
+### Component 3 — the convergent-validity check
+
+| Method                    | Role                                                        |
+| ------------------------- | ----------------------------------------------------------- |
+| NiCE (sparsity-optimized) | Nearest-unlike-neighbour readings; observed-range, parsimonious |
+| DiCE (random method)      | Diversity-driven readings; wider constituent space          |
+
+Agreement between the two algorithmically distinct procedures on **which constituents are decisive** is the convergent-validity criterion. Because the methods share no optimization principle, their convergence is difficult to explain as a shared artifact.
+
+### Structural-coherence reading
+
+Constituent values are perturbed and the instrument is re-read under seven stylized scenarios (A-20/40/60, B-20/40/60, C), stratified by employment status. These are **sensitivity readings of the instrument's internal structure, not causal impact estimates.**
 
 ---
 
 ## Results Summary
 
-| Metric | Value |
-|---|---|
-| Sample (youth, income earners) | 1,916 |
-| Crisis rate | 15.6% |
-| CV ROC-AUC (LightGBM) | 0.882 ± 0.027 |
-| CV ROC-AUC (XGBoost) | 0.883 ± 0.035 |
-| NiCE avg. features changed | 1.7 |
-| DiCE avg. features changed | 1.6 |
-| Top intervention variable (NiCE) | Financial institution loan |
-| Top intervention variable (DiCE) | Temporary wage income |
+| Item                                          | Value                        |
+| --------------------------------------------- | ---------------------------- |
+| Sample (youth, income earners)                | 1,916                        |
+| Distress rate (DSR ≥ 0.40)                    | 15.6%                        |
+| CV ROC-AUC (LightGBM)                         | 0.882 ± 0.027                |
+| CV ROC-AUC (XGBoost)                          | 0.883 ± 0.035                |
+| Dominant constituent #1 (mean \|SHAP\|)       | Financial institution loan (1.682) |
+| Dominant constituent #2 (mean \|SHAP\|)       | Temporary wage income (1.466) |
+| Income–distress relationship                  | Nonmonotonic (stability, not level, protective) |
+| Mean constituent changes — NiCE               | 1.7                          |
+| Mean constituent changes — DiCE               | 1.6                          |
+| Cross-method convergence                      | Both isolate financial-institution loan and temporary wage income |
+
+All numerical results are produced by the notebooks below and are unchanged across framings of the analysis.
 
 ---
 
 ## Environment Setup
 
-```bash
+```
 # Create conda environment
 conda create -n youth-debt python=3.10 -y
 conda activate youth-debt
@@ -127,22 +159,22 @@ python -m ipykernel install --user --name diceml --display-name "Python (diceml)
 
 Run notebooks in the following order. Notebooks 05, 05b, 05c require the respective environments noted below.
 
-| Notebook | Environment | Description |
-|---|---|---|
-| 01_preprocessing | youth-debt | Data loading and feature engineering |
-| 02_eda | youth-debt | Descriptive statistics and visualization |
-| 03_model_lgbm_xgb | youth-debt | Model training and evaluation |
-| 04_shap_analysis | youth-debt | SHAP explainability analysis |
-| 05_nice_counterfactual | youth-debt | NiCE counterfactual generation |
-| 05b_dice_counterfactual | diceml | DiCE counterfactual generation |
-| 05c_case_comparison | youth-debt | Cross-method case comparison |
-| 06_policy_simulation | youth-debt | Policy scenario simulation |
+| Notebook                  | Environment | Description                                        |
+| ------------------------- | ----------- | ------------------------------------------------- |
+| 01\_preprocessing         | youth-debt  | Data loading, DSR construction, indicator definition |
+| 02\_eda                   | youth-debt  | Descriptive structure of the construct            |
+| 03\_model\_lgbm\_xgb      | youth-debt  | Component 1: measurement instrument (fidelity)    |
+| 04\_shap\_analysis        | youth-debt  | Component 2: quantitative–qualitative bridge      |
+| 05\_nice\_counterfactual  | youth-debt  | Component 3: NiCE validity reading                |
+| 05b\_dice\_counterfactual | diceml      | Component 3: DiCE validity reading                |
+| 05c\_case\_comparison     | youth-debt  | Convergent-validity: cross-method agreement       |
+| 06\_policy\_simulation    | youth-debt  | Structural-coherence reading by subgroup          |
 
 ---
 
 ## Citation
 
-> Anonymous Authors. (under review). *[Title anonymized for review]*. Submitted to [Journal anonymized for review].
+> Anonymous Authors. (under review). *[Title anonymized for review]*. Submitted to *[Journal anonymized for review]*.
 
 ---
 
@@ -150,4 +182,4 @@ Run notebooks in the following order. Notebooks 05, 05b, 05c require the respect
 
 This project is licensed under the MIT License. See `LICENSE` for details.
 
-The KOWEPS dataset is subject to its own terms of use. Please refer to [https://www.koweps.re.kr](https://www.koweps.re.kr) for data licensing information.
+The KOWEPS dataset is subject to its own terms of use. Please refer to <https://www.koweps.re.kr> for data licensing information.
